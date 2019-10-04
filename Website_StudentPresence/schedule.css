@@ -1,0 +1,42 @@
+#button {
+    border-radius: 0px;
+    height: 40px;
+    width: 100px;
+    background-color: #1e90ff;
+    font-size: 20px;
+    text-align: center;
+    color: #000000;
+    margin: 0 auto;
+    padding-top: 15px;
+    margin-bottom: 50px;
+    border: 2px solid #000000;
+}
+
+#button:hover{
+    background-color: #1b76cc;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+table, th, td {
+    border: 1px solid black;
+    background: #f3f3f3;
+}
+
+td:hover {
+    background: #cccccc;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
