@@ -1,0 +1,178 @@
+* {												/*disable browser specific padding etc.*/
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        font-family: 'Lato', sans-serif;
+    }
+html,body {										
+    padding:0;
+    margin:0;
+    height:100%;
+    min-height:100%;
+}
+h1{
+	color:white;
+}
+
+.wrap {height:100%; overflow:hidden;} 			/* disable scrolling */
+
+.header {
+	height:10%;
+  	background: #cc0033;
+
+ 	border-bottom: 2px solid black;
+}
+.headers{
+	padding-left:3%;
+	padding-top:2%;
+	font-weight:bold;
+}
+
+.maincontent{
+	background-color:white;
+	width:79%; 
+	height:90%; 
+	float:right;
+	overflow-y:scroll; 
+
+}
+.table{
+	padding:40px;
+  text-align:center;
+  background: #dfd0d4
+}
+.headerbuttons{
+	  text-decoration: none;
+	  color:white;
+	  padding:5%;
+
+}
+
+table, th, td {
+	padding:20px;
+	border: 1px solid black;
+	border:none;
+  	border-collapse: collapse;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+    background-color:#dedede;
+}
+tr:nth-child(odd) {
+  background-color:white;
+}
+.center{
+	text-align: center; 
+  	vertical-align: middle; 
+}
+
+
+
+.checkbox-custom {
+  display: none;
+}
+.checkbox-custom-label {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer;
+}
+.checkbox-custom + .checkbox-custom-label:before {
+  content: "";
+  background: #fff;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px; height: 10px;
+  padding: 2px; margin-right: 10px;
+}
+.checkbox-custom:checked + .checkbox-custom-label:after {
+  content: "";
+  padding: 2px;
+  position: absolute;
+  width: 1px;
+  height: 5px;
+  border: solid #cc0033;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  top: 2px; left: 5px;
+}
+
+
+/* Styling for left classes menu */ 
+.vertical-menu a {
+  background-color: #dedede; 
+  color: black; 
+  display: block; 
+  padding: 12px; 
+  text-decoration: none; 
+  border-bottom: 2px solid #fff;
+  border-radius: 3px solid #fff;
+  text-align:center;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc; 
+}
+
+.vertical-menu a.active {
+  background-color: #696868; 
+  color: white;
+  text-align:center;
+}
+
+.table tbody tr:hover td {
+    background: #ccc;
+
+}
+.leftcolumn{
+	background-color:black; 
+	width:20%; 
+	height:90%;
+	float:left;
+	overflow-y:scroll; 
+	border: 1px solid #333;
+  	box-shadow: 5px 0 5px -2px #888;
+}
+.red{
+color:red;
+}
+.gray{
+background-color:gray;
+}
+
+
+
+
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
