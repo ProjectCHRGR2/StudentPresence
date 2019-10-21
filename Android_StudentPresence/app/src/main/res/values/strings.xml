@@ -2,4 +2,11 @@
     <string name="app_name">StudentPresence</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_qractivity">Attendance Scanner</string>
+
+    // Login Screen
+    <string name="LoginLogo">The HR Logo</string>
+    <string name="Login">Log in</string>
+    <string name="Email">Email</string>
+    <string name="PW">Password</string>
+
 </resources>
