@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         Button loginbutton = findViewById(R.id.login_button);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
