@@ -67,27 +67,24 @@
 
     <script>
         function CreateTableFromJSON(week) {
-        if(week == 1) {
-            var theSchedule = [
+            var theSchedule = {"1":[
             {"Timeslot": "1","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-            {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
+            {"Timeslot": "3","Monday": "coursecode, WD04.002 (inf2c)","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "4","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "5","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-            {"Timeslot": "6","Monday": "","Tuesday": "","Wednesday": "4","Thursday": "","Friday": ""},
+            {"Timeslot": "6","Monday": "","Tuesday": "","Wednesday": "coursecode, WD04.002 (inf2c)","Thursday": "","Friday": ""},
             {"Timeslot": "7","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "8","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-            {"Timeslot": "9","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
+            {"Timeslot": "9","Monday": "","Tuesday": "","Wednesday": "","Thursday": "coursecode, WD04.002 (inf2c)","Friday": ""},
             {"Timeslot": "10","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "11","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-            {"Timeslot": "12","Monday": "","Tuesday": "2","Wednesday": "","Thursday": "","Friday": ""},
+            {"Timeslot": "12","Monday": "","Tuesday": "coursecode, WD04.002 (inf2c)","Wednesday": "","Thursday": "","Friday": "coursecode, WD04.002 (inf2c)"},
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""}
-]
-        }
-        if(week == 2) {
-            var theSchedule = [
+],
+"2":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -102,11 +99,9 @@
             {"Timeslot": "12","Monday": "","Tuesday": "2","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-            {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 3) {
-            var theSchedule = [
+            {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""}
+],
+"3": [
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -122,10 +117,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "yes","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 4) {
-            var theSchedule = [
+],
+"4":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -141,10 +134,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 5) {
-            var theSchedule = [
+],
+"5":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "23","Friday": ""},
@@ -160,10 +151,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 6) {
-            var theSchedule = [
+],
+"6":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -179,10 +168,8 @@
             {"Timeslot": "13","Monday": "class","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 7) {
-            var theSchedule = [
+],
+"7":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -198,10 +185,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 8) {
-            var theSchedule = [
+],
+"8":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -217,10 +202,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 9) {
-            var theSchedule = [
+],
+"9":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "432","Friday": ""},
@@ -236,10 +219,8 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-        if(week == 10) {
-            var theSchedule = [
+],
+"10":[
             {"Timeslot": "1","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "2","Monday": "2","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "3","Monday": "1","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
@@ -255,9 +236,9 @@
             {"Timeslot": "13","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "14","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
             {"Timeslot": "15","Monday": "","Tuesday": "","Wednesday": "","Thursday": "","Friday": ""},
-]
-        }
-
+    ]
+}
+theSchedule = theSchedule[week.toString()]
         var col = [];
         for (var i = 0; i < theSchedule.length; i++) {
             for (var key in theSchedule[i]) {
