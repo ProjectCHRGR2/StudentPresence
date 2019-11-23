@@ -16,6 +16,10 @@
             android:label="@string/title_activity_qractivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".TakeSelfie"
+            android:label="Take a Selfie"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

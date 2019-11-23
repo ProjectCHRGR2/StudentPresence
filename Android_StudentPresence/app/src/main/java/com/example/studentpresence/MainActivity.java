@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button loginbutton = findViewById(R.id.login_button);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, qractivity.class);
+                Intent intent = new Intent(MainActivity.this, TakeSelfie.class);
                 startActivity(intent);
             }
         });
