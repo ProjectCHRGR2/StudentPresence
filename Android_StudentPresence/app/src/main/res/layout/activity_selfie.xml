@@ -14,6 +14,7 @@
         android:id="@+id/selfieButton"
         android:layout_width="350dp"
         android:layout_height="419dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.35"
         app:layout_constraintHorizontal_bias="0.5"

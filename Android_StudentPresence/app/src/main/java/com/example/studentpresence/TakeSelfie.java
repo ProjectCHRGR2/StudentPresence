@@ -50,7 +50,7 @@ public class TakeSelfie extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validate()) {
-
+                    //add wherever the picture needs to go here later
                 }
             }
         });
