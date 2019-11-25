@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "716883384544",
+    "firebase_url": "https://studentpre-a7d96.firebaseio.com",
+    "project_id": "studentpre-a7d96",
+    "storage_bucket": "studentpre-a7d96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716883384544:android:4a2be2b88d5081c442d885",
+        "android_client_info": {
+          "package_name": "com.example.studentpresence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716883384544-1fe3usg25uvt0pkqev13vh1o9b1f014e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studentpresence",
+            "certificate_hash": "09b5fc8cb8ee116b961a36937a9f8a79813e6267"
+          }
+        },
+        {
+          "client_id": "716883384544-7nmfkg1upin1412tn1s1g7oacefl6k2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs5MqWkD1_k17RdHGUW1Fs1sZ6CpxlE_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716883384544-7nmfkg1upin1412tn1s1g7oacefl6k2q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
