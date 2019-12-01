@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                             if (task.isSuccessful()) { // If Sign In is successful, show confirmation to user and go to scanner screen.
                                 Toast.makeText(MainActivity.this, "Login successful.", Toast.LENGTH_LONG).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(MainActivity.this, qractivity.class);
+                                Intent intent = new Intent(MainActivity.this, TakeSelfie.class);
                                 startActivity(intent);
                             } else { //If Sign In fails, show to user. No action.
                                 Toast.makeText(MainActivity.this, "Authentication failed.",

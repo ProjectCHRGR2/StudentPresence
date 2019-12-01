@@ -51,6 +51,11 @@ public class TakeSelfie extends AppCompatActivity {
             public void onClick(View view) {
                 if(validate()) {
                     //add wherever the picture needs to go here later
+                    //Send the picture to the database
+
+                    //Open QR Scanner
+                    Intent intent = new Intent(TakeSelfie.this, qractivity.class);
+                    startActivity(intent);
                 }
             }
         });
