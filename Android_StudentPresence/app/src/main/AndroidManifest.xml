@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="RegisterActivity"
-            android:label="@string/title_activity_register"></activity>
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" />
         <activity
             android:name=".qractivity"
             android:label="@string/title_activity_qractivity"
