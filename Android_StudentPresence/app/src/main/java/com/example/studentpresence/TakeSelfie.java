@@ -5,18 +5,24 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+
+
 
 public class TakeSelfie extends AppCompatActivity {
 
@@ -25,6 +31,7 @@ public class TakeSelfie extends AppCompatActivity {
     private ImageButton galleryButton;
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
+    private String studentId = "TempId1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,24 @@ public class TakeSelfie extends AppCompatActivity {
             public void onClick(View view) {
                 if(validate()) {
                     //add wherever the picture needs to go here later
+                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                    StorageReference storageRef = storage.getReference();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] bData = baos.toByteArray();
+                    StorageReference picsRef = storageRef.child("item-pics/"+studentId+".jpg");
+                    UploadTask uploadTask = picsRef.putBytes(bData);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        }
+                    });
                 }
             }
         });
