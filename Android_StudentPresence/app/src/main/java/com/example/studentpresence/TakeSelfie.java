@@ -31,12 +31,13 @@ public class TakeSelfie extends AppCompatActivity {
     private ImageButton galleryButton;
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
-    private String studentId = "TempId1";
+    private String studentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selfie);
+        studentId = getIntent().getStringExtra("StudentId");
         Button confirmButton = findViewById(R.id.selfie_confirm);
         galleryButton = findViewById(R.id.selfieButton);
         galleryButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,8 @@ public class TakeSelfie extends AppCompatActivity {
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
+                            Intent intent = new Intent(TakeSelfie.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     });
                 }
@@ -93,7 +95,7 @@ public class TakeSelfie extends AppCompatActivity {
 
     private boolean validate(){
         if(imageBitmap == null){
-            Toast.makeText(this, "Please enter all details", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please take a picture of yourself", Toast.LENGTH_SHORT).show();
             return false;
         }
         else {

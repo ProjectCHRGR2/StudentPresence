@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         Button registerbutton = findViewById(R.id.register_redirect_button);
         registerbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TakeSelfie.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
