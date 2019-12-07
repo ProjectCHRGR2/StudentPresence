@@ -37,7 +37,7 @@ public class TakeSelfie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selfie);
-        studentId = getIntent().getStringExtra("StudentId");
+        studentId = getIntent().getStringExtra("StudentId");  //gets the student Id from the registration screen
         Button confirmButton = findViewById(R.id.selfie_confirm);
         galleryButton = findViewById(R.id.selfieButton);
         galleryButton.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class TakeSelfie extends AppCompatActivity {
                     startActivityForResult(cameraIntent, CAMERA_REQUEST);
                 }
             }
-        });
+        }); //gets permission to use the camera app, and upon getting the permissions opens in
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +87,7 @@ public class TakeSelfie extends AppCompatActivity {
     {
         super.onActivityResult(requestCode,resultCode,data);
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            Bitmap photo = (Bitmap) data.getExtras().get("data");   //gets the photo that was taken and puts it into a bitmap in the next few lines
             galleryButton.setImageBitmap(photo);
             imageBitmap = photo;
         }
