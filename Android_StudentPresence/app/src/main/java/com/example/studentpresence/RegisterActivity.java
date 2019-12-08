@@ -1,6 +1,7 @@
 package com.example.studentpresence;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -103,14 +104,20 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, " Successfully Registered.", Toast.LENGTH_LONG).show();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance(); // If the Firebase function runs succesfully, enter following values into database.
                                     DatabaseReference myRef = database.getReference(mAuth.getUid());
+                                    String student_id = studentNum.getText().toString();
                                     //Prepare all values for sending below.
                                     UserProfile User = new UserProfile();
                                     User.setUserEmail(email_reg.getText().toString());
                                     User.setUserStudentNum(studentNum.getText().toString());
                                     User.setUserLastName(lastName.getText().toString());
                                     User.setUserFirstName(firstName.getText().toString());
+
                                     User.setUserClass(userClass);
                                     myRef.setValue(User); // Send values to Database.
+                                    Intent intent = new Intent(RegisterActivity.this, TakeSelfie.class);
+                                    intent.putExtra("StudentId",student_id);
+                                    startActivity(intent);
+                                  
                                 } else {Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();} // Exception message will be returned by Firebase in case of an error.
                             }
                         });
