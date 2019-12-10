@@ -6,7 +6,6 @@ public class UserProfile {
     private String userEmail;
     private String userStudentNum;
     private String userClass;
-    // Add picture?
 
     public void userProfile(){
     }

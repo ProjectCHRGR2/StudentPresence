@@ -58,7 +58,6 @@ public class TakeSelfie extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validate()) {
-                    //add wherever the picture needs to go here later
                     FirebaseStorage storage = FirebaseStorage.getInstance();
                     StorageReference storageRef = storage.getReference();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -69,11 +68,12 @@ public class TakeSelfie extends AppCompatActivity {
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
+                            Toast.makeText(TakeSelfie.this, "The upload failed.", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(TakeSelfie.this, "Selfie Upload successful. Registration complete.", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(TakeSelfie.this, MainActivity.class);
                             startActivity(intent);
                         }
