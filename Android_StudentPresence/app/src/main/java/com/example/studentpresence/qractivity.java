@@ -30,6 +30,8 @@ public class qractivity extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
     TextView textView;
 
+    private static final int CAMERA_PERMISSION_CODE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,48 +42,44 @@ public class qractivity extends AppCompatActivity {
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
 
         cameraSource = new CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(640, 480).build();
+        // The size might be changed in the future for a better resolution. However, this is not required.
 
         cameraPreview.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-                {
-                    return;
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE); //If no permission, get permission.
                 }
                 try {
-                    cameraSource.start(surfaceHolder);
-                }catch (IOException e){
+                    cameraSource.start(surfaceHolder); // Start the previewer within the app.
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
-            }
+            public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
+            // Surface won't change. However, this method is still required.
 
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-                cameraSource.stop();
+                cameraSource.stop(); // Close the camera previewer when the activity is closed.
             }
         });
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
-            public void release() {
-
-            }
+            public void release() {}
 
             @Override
-            public void receiveDetections(Detector.Detections<Barcode> detections) {
-                SparseArray<Barcode> qrCodes = detections.getDetectedItems();
-
-                if (qrCodes.size() != 0){
+            public void receiveDetections(Detector.Detections<Barcode> detections) { // Handle whatever is detected within the QR code.
+                SparseArray<Barcode> qrCodes = detections.getDetectedItems(); //
+                if (qrCodes.size() != 0){ // If something is detected, do the following. Else, do nothing.
                     textView.post(new Runnable(){
                         @Override
                         public void run() {
                             Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                            vibrator.vibrate(500);
+                            vibrator.vibrate(250);
                             Toast.makeText(qractivity.this, "You scanned something!", Toast.LENGTH_SHORT).show();
                         }
                     });
