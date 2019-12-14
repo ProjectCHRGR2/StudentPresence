@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, " Successfully Registered.", Toast.LENGTH_LONG).show();
                                     FirebaseDatabase database = FirebaseDatabase.getInstance(); // If the Firebase function runs succesfully, enter following values into database.
-                                    DatabaseReference myRef = database.getReference(mAuth.getUid());
+                                    DatabaseReference myRef = database.getReference().child("Students").child(mAuth.getUid());
                                     String student_id = studentNum.getText().toString();
                                     //Prepare all values for sending below.
                                     UserProfile User = new UserProfile();
