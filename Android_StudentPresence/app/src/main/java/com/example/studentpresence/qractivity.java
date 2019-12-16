@@ -73,14 +73,16 @@ public class qractivity extends AppCompatActivity {
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) { // Handle whatever is detected within the QR code.
-                SparseArray<Barcode> qrCodes = detections.getDetectedItems(); //
+                final SparseArray<Barcode> qrCodes = detections.getDetectedItems();
                 if (qrCodes.size() != 0){ // If something is detected, do the following. Else, do nothing.
                     textView.post(new Runnable(){
                         @Override
                         public void run() {
                             Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-                            vibrator.vibrate(250);
-                            Toast.makeText(qractivity.this, "You scanned something!", Toast.LENGTH_SHORT).show();
+                            vibrator.vibrate(250); // Vibrate after scanning.
+                            Toast.makeText(qractivity.this, qrCodes.valueAt(0).displayValue, Toast.LENGTH_SHORT).show();
+                            textView.setText("You may now close the app.");
+                            cameraSource.stop();
                         }
                     });
                 }
