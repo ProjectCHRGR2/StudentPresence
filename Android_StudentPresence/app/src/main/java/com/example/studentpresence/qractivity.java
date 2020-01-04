@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -20,7 +19,11 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 
 public class qractivity extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class qractivity extends AppCompatActivity {
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     TextView textView;
+    String message;
 
     private static final int CAMERA_PERMISSION_CODE = 100;
 
@@ -58,7 +62,8 @@ public class qractivity extends AppCompatActivity {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
+            public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+            }
             // Surface won't change. However, this method is still required.
 
             @Override
@@ -69,26 +74,31 @@ public class qractivity extends AppCompatActivity {
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
-            public void release() {}
+            public void release() {
+            }
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) { // Handle whatever is detected within the QR code.
                 final SparseArray<Barcode> qrCodes = detections.getDetectedItems();
-                if (qrCodes.size() != 0){ // If something is detected, do the following. Else, do nothing.
-                    textView.post(new Runnable(){
+                if (qrCodes.size() != 0) { // If something is detected, do the following. Else, do nothing.
+                    textView.post(new Runnable() {
                         @Override
                         public void run() {
-                            Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                            Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(250); // Vibrate after scanning.
                             Toast.makeText(qractivity.this, qrCodes.valueAt(0).displayValue, Toast.LENGTH_SHORT).show();
                             textView.setText("You may now close the app.");
                             cameraSource.stop();
+
+                            message = ("TESTER" + qrCodes.valueAt(0).toString());
+                            SendMessage sender = new SendMessage(message);
+                            sender.start();
+
                         }
                     });
                 }
             }
         });
+
     }
-
-
 }
