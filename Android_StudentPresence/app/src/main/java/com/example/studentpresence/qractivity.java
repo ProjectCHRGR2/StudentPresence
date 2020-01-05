@@ -8,6 +8,9 @@ import android.os.Vibrator;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +21,16 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class qractivity extends AppCompatActivity {
@@ -32,7 +39,8 @@ public class qractivity extends AppCompatActivity {
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     TextView textView;
-    String message;
+
+    FirebaseAuth mAuth;
 
     private static final int CAMERA_PERMISSION_CODE = 100;
 
@@ -41,6 +49,7 @@ public class qractivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qractivity);
 
+        mAuth = FirebaseAuth.getInstance();
         textView = findViewById(R.id.textView);
         cameraPreview = findViewById(R.id.cameraPreview);
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
@@ -86,15 +95,34 @@ public class qractivity extends AppCompatActivity {
                         public void run() {
                             Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(250); // Vibrate after scanning.
-                            Toast.makeText(qractivity.this, qrCodes.valueAt(0).displayValue, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(qractivity.this, qrCodes.valueAt(0).displayValue, Toast.LENGTH_SHORT).show(); // DEBUG TOOL: UNCOMMENT FOR CODE DISPLAY ON SCAN
                             textView.setText("You may now close the app.");
                             cameraSource.stop();
 
-                            message = ("TESTER" + qrCodes.valueAt(0).toString());
-                            SendMessage sender = new SendMessage(message);
-                            sender.start();
-
-                        }
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            final DatabaseReference databaseRef = database.getReference(); // Set reference to the database.
+                            final DatabaseReference studentNumRef = databaseRef.child("Students").child(mAuth.getUid()).child("userStudentNum"); // Set reference to the child in the database called "Classes".
+                            studentNumRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) { // Read the database and get the Student Number.
+                                    String studentNum = dataSnapshot.getValue(String.class);
+                                    String message = studentNum;
+                                    System.out.println("Student Number read as: " + message);
+                                    String qrCodeResult = qrCodes.valueAt(0).displayValue;
+                                    System.out.println(qrCodeResult);
+                                    DatabaseReference lessonRef = databaseRef.child(qrCodeResult).child(mAuth.getUid()); // Set path to QR Code location.
+                                    Map<String, Object> presenceUpdate = new HashMap<>();
+                                    presenceUpdate.put("StudentNumber", message); // Send update. This does not remove the other children, while .put() does.
+                                    lessonRef.updateChildren(presenceUpdate);
+                                    presenceUpdate.put("Present", "Present");
+                                    lessonRef.updateChildren(presenceUpdate);
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    System.out.println("The read failed: " + databaseError.getCode());
+                                }
+                            });
+                                                    }
                     });
                 }
             }
